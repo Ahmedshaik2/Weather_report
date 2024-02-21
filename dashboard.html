@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Weather Dashboard</h1>
+    <form method="post" action="">
+        <label for="location">Enter Location:</label>
+        <input type="text" id="location" name="location" required>
+        <br>
+        <input type="submit" value="Get Weather">
+    </form>
+    <br>
+    {% if weather_data %}
+        <h2>Current Weather in {{ weather_data[2] }}</h2>
+        <p>Description: {{ weather_data[3] }}</p>
+        <p>Temperature: {{ weather_data[4] }} °C</p>
+        <p>Humidity: {{ weather_data[5] }}%</p>
+        <p>Feels Like: {{ weather_data[6] }} °C</p>
+    {% endif %}
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>
